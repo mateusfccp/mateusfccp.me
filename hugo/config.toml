@@ -1,58 +1,95 @@
 baseurl = "/"
-languageCode = "en-us"
+defaultContentLanguage = "pt"
+languageCode = "pt-br"
 theme = "hello-friend-ng"
 publishDir = "/usr/share/nginx/html"
+copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
+
+[author]
+name = "Mateus Felipe C. C. Pinto"
 
 [params]
-  dateform        = "2 de Jan de 2006"
-  dateformShort   = "2 de Jan"
-  dateformNum     = "2006-01-02"
-  dateformNumTime = "2006-01-02 15:04 -0700"
+dateform        = "2 de Jan de 2006"
+dateformShort   = "2 de Jan"
+dateformNum     = "2006-01-02"
+dateformNumTime = "2006-01-02 15:04 -0700"
 
-  # Metadata mostly used in document's head
-  description = "Homepage and blog by Djordje Atlialp"
-  keywords = "homepage, blog, science, informatics, development, programming"
-  images = [""]
+# Metadata mostly used in document's head
+description  = "Homepage e blog do Mateus Felipe"
+homeSubtitle = "Desenvolvedor · Teólogo"
+keywords     = "homepage, blog, development, programming"
 
-  # Directory name of your blog content (default is `content/posts`)
-  contentTypeName = "posts"
-  # Default theme "light" or "dark"
-  defaultTheme = "dark"
+# Directory name of your blog content
+contentTypeName = "posts"
+defaultTheme = "dark"
+
+enableEmoji = true
+
+# Social
+[[params.social]]
+name = "twitter"
+url  = "https://twitter.com/mateusfccp"
+
+[[params.social]]
+name = "email"
+url  = "mailto:mateusfccp@gmail.com"
+
+[[params.social]]
+name = "github"
+url  = "https://github.com/mateusfccp"
+
+[[params.social]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/mateusfccp"
 
 [languages]
-  [languages.en]
-    title = "Mateus Felipe"
-    subtitle = "Desenvolvedor · Teólogo"
-    keywords = ""
-    copyright = ""
-    readOtherPosts = "Ler outros posts"
+[languages.pt]
+title          = "Mateus Felipe"
+subtitle       = "Desenvolvedor · Teólogo"
+keywords       = "homepage, blog, desenvolvimento, programação"
+readOtherPosts = "Ler outros posts"
+copyright      = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
 
-    [languages.en.params.logo]
-      logoText = "hello friend ng"
-      logoHomeLink = "/"
-    # or
-    #
-    # path = "/img/your-example-logo.svg"
-    # alt = "Your example logo alt text"
+[languages.pt.logo]
+logoText     = "#[get(\"home\")]"
+logoHomeLink = "/"
 
-	# You can create a language based menu
-    [languages.en.menu]
-      [[languages.en.menu.main]]
-        identifier = "sobre"
-        name = "About"
-        url = "/about"
-      [[languages.en.menu.main]]
-        identifier = "showcase"
-        name = "Showcase"
-        url = "/showcase"
+[languages.pt.menu]
+[[languages.pt.menu.main]]
+identifier = "about"
+name       = "Sobre"
+url        = "/about"
+[[languages.pt.menu.main]]
+identifier = "showcase"
+name       = "Showcase"
+url        = "/showcase"
 
-# And you can even create generic menu
-[menu]
-  [[menu.main]]
-    identifier = "about"
-    name       = "About"
-    url        = "/about"
-  [[menu.main]]
-    identifier = "blog"
-    name       = "Blog"
-    url        = "/posts"
+[[languages.pt.menu.main]]
+identifier = "blog"
+name       = "Blog"
+url        = "/posts"
+
+[languages.en]
+title          = "Mateus Felipe"
+subtitle       = "Developer · Theologian"
+keywords       = "homepage, blog, development, programming"
+readOtherPosts = "Read other posts"
+copyright      = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+
+[languages.en.logo]
+logoText     = "#[get(\"home\")]"
+logoHomeLink = "/"
+
+[languages.en.menu]
+[[languages.en.menu.main]]
+identifier = "about"
+name       = "About"
+url        = "/about"
+[[languages.en.menu.main]]
+identifier = "showcase"
+name       = "Showcase"
+url        = "/showcase"
+[[languages.en.menu.main]]
+identifier = "blog"
+name       = "Blog"
+url        = "/posts"
