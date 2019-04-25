@@ -4,6 +4,7 @@ linktitle = "Creating a New Theme"
 description = "How I've set up this site and theme with Hugo and Docker"
 date = "2019-04-25"
 type = "post"
+comments = true
 
 [author]
 name = "Mateus Felipe Cordeiro Caetano Pinto"
