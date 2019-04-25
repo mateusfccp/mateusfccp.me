@@ -17,7 +17,7 @@ dateformNumTime = "2006-01-02 15:04 -0700"
 # Metadata mostly used in document's head
 description  = "Homepage e blog do Mateus Felipe"
 homeSubtitle = "Desenvolvedor · Teólogo"
-keywords     = "homepage, blog, development, programming"
+keywords     = "homepage, blog, development, programming, theology"
 
 # Directory name of your blog content
 contentTypeName = "posts"
