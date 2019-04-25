@@ -1,7 +1,8 @@
 baseurl = "/"
-defaultContentLanguage = "pt"
-languageCode = "pt-br"
-theme = "hello-friend-ng"
+defaultContentL
+anguage = "pt-br"
+languageCode = "pt-br-br"
+theme = "mateusfccp.me"
 publishDir = "/usr/share/nginx/html"
 copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
 
@@ -43,28 +44,28 @@ name = "linkedin"
 url = "https://www.linkedin.com/in/mateusfccp"
 
 [languages]
-[languages.pt]
+[languages.pt-br]
 title          = "Mateus Felipe"
 subtitle       = "Desenvolvedor · Teólogo"
 keywords       = "homepage, blog, desenvolvimento, programação"
 readOtherPosts = "Ler outros posts"
 copyright      = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
 
-[languages.pt.logo]
+[languages.pt-br.logo]
 logoText     = "#[get(\"home\")]"
 logoHomeLink = "/"
 
-[languages.pt.menu]
-[[languages.pt.menu.main]]
+[languages.pt-br.menu]
+[[languages.pt-br.menu.main]]
 identifier = "about"
 name       = "Sobre"
 url        = "/about"
-[[languages.pt.menu.main]]
+[[languages.pt-br.menu.main]]
 identifier = "showcase"
 name       = "Showcase"
 url        = "/showcase"
 
-[[languages.pt.menu.main]]
+[[languages.pt-br.menu.main]]
 identifier = "blog"
 name       = "Blog"
 url        = "/posts"
