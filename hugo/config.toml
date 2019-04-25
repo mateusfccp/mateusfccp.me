@@ -1,9 +1,12 @@
+# .Site configuration
 baseurl = "/"
 defaultContentLanguage = "pt-br"
 languageCode = "pt-br"
 theme = "mateusfccp.me"
 publishDir = "/usr/share/nginx/html"
 copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
+
+disqusShortname = "mateusfccp"
 
 [author]
 name = "Mateus Felipe C. C. Pinto"
@@ -52,7 +55,7 @@ readOtherPosts = "Ler outros posts"
 copyright      = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
 
 [languages.pt-br.logo]
-logoText     = "#[get(\"home\")]"
+logoText     = "[mateusfccp@arch ~]" 
 logoHomeLink = "/"
 
 [languages.pt-br.menu]
