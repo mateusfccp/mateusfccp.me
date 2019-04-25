@@ -1,7 +1,6 @@
 baseurl = "/"
-defaultContentL
-anguage = "pt-br"
-languageCode = "pt-br-br"
+defaultContentLanguage = "pt-br"
+languageCode = "pt-br"
 theme = "mateusfccp.me"
 publishDir = "/usr/share/nginx/html"
 copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
@@ -22,8 +21,9 @@ keywords     = "homepage, blog, development, programming"
 
 # Directory name of your blog content
 contentTypeName = "posts"
-defaultTheme = "dark"
+defaultTheme    = "dark"
 
+# Others
 enableEmoji = true
 
 # Social
@@ -60,14 +60,10 @@ logoHomeLink = "/"
 identifier = "about"
 name       = "Sobre"
 url        = "/about"
-[[languages.pt-br.menu.main]]
-identifier = "showcase"
-name       = "Showcase"
-url        = "/showcase"
 
 [[languages.pt-br.menu.main]]
-identifier = "blog"
-name       = "Blog"
+identifier = "posts"
+name       = "Posts"
 url        = "/posts"
 
 [languages.en]
@@ -86,11 +82,8 @@ logoHomeLink = "/"
 identifier = "about"
 name       = "About"
 url        = "/about"
+
 [[languages.en.menu.main]]
-identifier = "showcase"
-name       = "Showcase"
-url        = "/showcase"
-[[languages.en.menu.main]]
-identifier = "blog"
-name       = "Blog"
+identifier = "posts"
+name       = "Posts"
 url        = "/posts"

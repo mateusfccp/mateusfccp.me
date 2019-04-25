@@ -8,7 +8,7 @@ RUN rm /tmp/* -r
 
 WORKDIR hugo
 COPY hugo .
-RUN hugo
+RUN hugo --gc --minify
 
 
 
