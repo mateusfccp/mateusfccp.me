@@ -55,7 +55,7 @@ readOtherPosts = "Ler outros posts"
 copyright      = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
 
 [languages.pt-br.logo]
-logoText     = "[mateusfccp@arch ~]" 
+logoText     = "[mateusfccp@arch ~]"
 logoHomeLink = "/"
 
 [languages.pt-br.menu]
@@ -77,7 +77,7 @@ readOtherPosts = "Read other posts"
 copyright      = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
 
 [languages.en.logo]
-logoText     = "#[get(\"home\")]"
+logoText     = "[mateusfccp@arch ~]"
 logoHomeLink = "/"
 
 [languages.en.menu]
