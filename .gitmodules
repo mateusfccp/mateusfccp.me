@@ -4,3 +4,6 @@
 [submodule "hugo/themes/mateusfccp.me"]
 	path = hugo/themes/mateusfccp.me
 	url = https://github.com/mateusfccp/mateusfccp.me-hugo.git
+[submodule "themes/mateusfccp.me"]
+	path = themes/mateusfccp.me
+	url = https://github.com/mateusfccp/mateusfccp.me-hugo/
