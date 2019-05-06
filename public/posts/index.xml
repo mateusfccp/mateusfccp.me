@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Mateus Felipe</title><link>http://mateusfccp.me/posts/</link><description>Recent content in Posts on Mateus Felipe</description><generator>Hugo -- gohugo.io</generator><language>pt-br</language><copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><lastBuildDate>Thu, 25 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://mateusfccp.me/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Criando rapidamente um site pessoal com Hugo e Docker</title><link>http://mateusfccp.me/posts/docker-and-hugo/</link><pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate><guid>http://mateusfccp.me/posts/docker-and-hugo/</guid><description>Introdução Criar um site pessoal é uma tarefa trivial. Existem diversas opções no mercado, desde opções para leigos totais, como o Wix, ou plataformas mais robustas (e, neste caso, de qualidade questionável), como o Wordpress. No entanto, caso se queira maior flexibilidade e capacidade técnica, o mais comum é se recorrer a soluções mais técnicas. Ainda assim, parece ser um esforço demasiado e desnecessário gastar o seu tempo lidando com rotas, middlewares, requisições HTTP ou quaisquer outros aspectos técnicos que não se deseja ter que lidar apenas para um site pessoal, mesmo que você tenha o conhecimento necessário.</description><content type="html"><![CDATA[
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Mateus Felipe</title><link>http://mateusfccp.me/posts/</link><description>Recent content in Posts on Mateus Felipe</description><generator>Hugo -- gohugo.io</generator><language>pt-br</language><copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><lastBuildDate>Mon, 06 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://mateusfccp.me/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Criando rapidamente um site pessoal com Hugo e Docker</title><link>http://mateusfccp.me/posts/docker-and-hugo/</link><pubDate>Mon, 06 May 2019 00:00:00 +0000</pubDate><guid>http://mateusfccp.me/posts/docker-and-hugo/</guid><description>Introdução Criar um site pessoal é uma tarefa trivial. Existem diversas opções no mercado, desde opções para leigos totais, como o Wix, ou plataformas mais robustas (e, neste caso, de qualidade questionável), como o Wordpress. No entanto, caso se queira maior flexibilidade e capacidade técnica, o mais comum é se recorrer a soluções mais técnicas. Ainda assim, parece ser um esforço demasiado e desnecessário gastar o seu tempo lidando com rotas, middlewares, requisições HTTP ou quaisquer outros aspectos técnicos que não se deseja ter que lidar apenas para um site pessoal, mesmo que você tenha o conhecimento necessário.</description><content type="html"><![CDATA[
 
 <h2 id="introdução">Introdução</h2>
 
@@ -64,7 +64,7 @@
 <li><code>keywords</code>: Palavras-chave relacionadas com o seu site (também usado nos metadados).</li>
 </ul>
 
-<p>Lógicamente, este é apenas um subconjunto comum de dezenas de possibilidades de configuração, e, normalmente, o suficiente para começar. Você pode consultar <a href="https://gohugo.io/getting-started/configuration">a documentação do Hugo</a> ou do tema que você escolheu para mais possibilidades de configuração, como <a href="https://gohugo.io/content-management/menus/">menus</a>, <a href="https://gohugo.io/content-management/multilingual/">suporte a várias línguas</a>, <a href="https://gohugo.io/content-management/comments/">comentários</a> etc.</p>
+<p>Logicamente, este é apenas um subconjunto comum de dezenas de possibilidades de configuração, e, normalmente, o suficiente para começar. Você pode consultar <a href="https://gohugo.io/getting-started/configuration">a documentação do Hugo</a> ou do tema que você escolheu para mais possibilidades de configuração, como <a href="https://gohugo.io/content-management/menus/">menus</a>, <a href="https://gohugo.io/content-management/multilingual/">suporte a várias línguas</a>, <a href="https://gohugo.io/content-management/comments/">comentários</a> etc.</p>
 
 <h2 id="produzindo-conteúdo">Produzindo Conteúdo</h2>
 
@@ -118,7 +118,84 @@ Total in 71 ms
 
 <p>Desenvolver um site rapidamente não tem muito sentido se você perder um bom tempo configurando uma infraestrutura para que ele possa rodar. Por conta disso, escolhi usar um contâiner Docker para fazer rapidamente o <em>deploy</em> do site.</p>
 
-<p>Como a única coisa que precisamos é servir arquivos estáticos, o <em>nginx</em> é uma opção viável. A <a href="https://hub.docker.com/_/nginx">imagem oficial do nginx</a> é mais do que suficiente para servirmos o site, e não vamos alterar nem mesmo uma linha do arquivo de configuração do <em>nginx</em>. Desta forma, a única coisa que temos que fazer é escrever nosso <em>Dockerfile</em> de forma que ele baixe o Hugo e o instale para poder compilar o arquivo.</p>
+<p>Como a única coisa que precisamos é servir arquivos estáticos, o <em>nginx</em> é uma opção viável. A <a href="https://hub.docker.com/_/nginx">imagem oficial do nginx</a> é mais do que suficiente para servirmos o site, e não vamos alterar nem mesmo uma linha do arquivo de configuração do <em>nginx</em>. Nosso <em>Dockerfile</em> fica simples:</p>
+
+<pre><code class="language-Dockerfile">FROM nginx:alpine
+COPY public /usr/share/nginx/html
+</code></pre>
+
+<p>Caso queira rodar o contâiner na sua máquina para testar, você pode fazê-lo facilmente com o comando</p>
+
+<pre><code>$ docker run --name mysite -d -p 80:80 mysite-instance
+</code></pre>
+
+<p>e acessá-lo através do navegador em <a href="http://localhost:80">http://localhost:80</a> (ou qual seja a porta que você configurou no argumento <code>-p</code>).</p>
+
+<h2 id="subindo-o-site-no-amazon-ecs">Subindo o Site no Amazon ECS</h2>
+
+<p>Com o seu site e <em>Dockerfile</em> devidamente configurado, só resta subir ele para que todos possam acessar. O primeiro passo para isso é disponibilizar a sua imagem no <a href="https://docs.docker.com">Docker Hub</a>. Você pode criar quantos repositórios públicos quiser de graça, e o processo está descrito na <a href="https://docs.docker.com/docker-hub/repos/">documentação</a>. Se você preferir, pode também anexar o repositório do Docker Hub ao seu repositório Git. Desta forma, sempre que for feito um <em>commit</em> no Git, o Docker Hub irá puxar a versão mais atual e atualizar a imagem.</p>
+
+
+<aside class="aside warning">
+    <div class="aside-header"><span style="margin-right: .4rem">&gt;</span> <span class="title">Atenção</span> <div class="cursor warning"> </div></div>
+    Os serviços da <em>Amazon Web Services</em> não são gratuitos em sua totalidade. Não me responsabilizo por quaisquer cobranças que você, eventualmente, venha a receber por ter seguido os passos a seguir.
+</aside>
+
+
+
+<p>Feito isso, abra o seu <em>console</em> da Amazon Web Sevices e procure pelo seviço <strong>ECS</strong>. Na página do serviço, clique em <strong>Task Definitions</strong>. Uma lista de <em>tasks</em> aparecerá (o que deverá estar vazia no momento). Clique no botão azul em cima da lista, escrito <em>Create new Task Definition</em>.</p>
+
+
+    <img src="/images/docker-and-hugo/01.png"  class="center"  />
+
+
+
+<p>Nesta página, quase todos os campos podem ficar como estão. Vamos fazer apenas duas mudanças. Primeiramente, dê um nome ao seu <em>task</em> através do campo <em>Task Definition Name</em>. Em seguida, desça até a seção chamada <strong>Container Definitions</strong> e clique no botão azul <strong>Add container</strong>. Uma tela se abrirá para você preencher outros dados.</p>
+
+
+    <img src="/images/docker-and-hugo/02.png"  class="center"  />
+
+
+
+<p>Nesta tela, preencha o <strong>Container name</strong> com um nome arbitrário para o seu contâiner. O próximo campo, <strong>Image</strong>, deverá ter o nome da imagem conforme você especificou ao subir para o Docker Hub. Lembre-se de incluir o <em>namespace</em> da imagem, isto é, o nome da sua conta. No meu caso, ficou <code>mateusfccp/mateusfccp.me</code>.</p>
+
+<p>Em <em>Memory Limits</em>, você define como será a alocação de memória para seu contâiner. Não vou entrar em detalhes aqui, recomendo que deixe um <strong>Hard Limit</strong> de <strong>300MiB</strong>, a não ser que veja necessidade de mais. No meu caso, por ser um site simples, foi o suficiente.</p>
+
+<p>Role a página até onde está escrito <strong>Port mappings</strong>. Para que seu contâiner fique visível, é necessário mapear a porta 80 do contâiner para a porta 80 do <em>host</em>. Em <strong>protocol</strong>, deixe como está (tcp). Clique no botão <strong>Add</strong> para finalizar a configuração do contâiner, e em <strong>Create</strong> para finalizar a criação da <em>Task Definition</em>.</p>
+
+<p>O próximo passo é criar um <strong>Cluster</strong>, isso é, uma máquina onde o seu contâiner vai rodar. Retorne à página principal do <strong>Amazon ECS</strong> e, no menu lateral, clique em <strong>Clusters</strong>. A página deverá mostrar todos os <em>clusters</em> configurados, se houver algum. Clique no botão azul <strong>Create Cluster</strong> e escolha entre o template de Linux ou Windows (💩).</p>
+
+<p>Na página seguinte, configure o <em>cluster</em> conforme a sua necessidade. Eu, particularmente, após inserir o nome, optei por uma instância (<strong>EC2 instance type</strong>) <em>t2.micro</em>, já que ela possui um período de gratuidade, e deixei o restante dos campos com seus valores padrão. Clique em <strong>Create</strong>. Você verá uma página detalhando a criação do seu <em>cluster</em>.</p>
+
+<p>Por fim, iremos anexar o <em>Task Definition</em> que criamos anteriormente ao <em>cluster</em> que acabamos de criar. Isso é feito atraveś de <em>services</em>. Volte novamente à página de <em>clusters</em>, onde agora você deverá ver o seu cluster recém criado, e clique nele.</p>
+
+<p>Uma página com alguns dados do <em>cluster</em> irá aparecer, e várias abas, onde a primeira é <em>services</em>. Clique no botão azul abaixo da aba, <strong>Create</strong>.</p>
+
+
+    <img src="/images/docker-and-hugo/03.png"  class="center"  />
+
+
+
+<p>Selecione a <em>Task Definition</em> e o <em>cluster</em> criados nos <em>dropdowns</em> respectivos. Nomeie o seu serviço e defina um número de <em>tasks</em> do seu serviço como 1. Todos os outros campos podem ser deixados como estão. Clique em <strong>Next</strong>.</p>
+
+<p>As duas páginas seguintes podem ser ignoradas. Avance-as deixando-as como estão. A última página mostrará um resumo das configurações escolhidas. Confira esses dados, e se estiverem de acordo com suas necessidades, clique em <strong>Create Service</strong>. Seu site já está disponível para a web!</p>
+
+<h2 id="verificando-os-dados-o-seu-contâiner">Verificando os dados o seu contâiner</h2>
+
+<p>Após sua aplicação ter sido configurada com sucesso, provavelmente você vai querer ver informações acerca dela, principalmente o IP público, para que você possa configurar um domínio. Para fazer isso, acesse novamente o seu *cluster, e clique na aba <strong>ECS Instances</strong>. Clique na única instância que estará na lista, no primeiro campo (<strong>Container Instance</strong>), e você será direcionado a uma página como esta:</p>
+
+
+    <img src="/images/docker-and-hugo/04.png"  class="center"  />
+
+
+
+<h2 id="conclusão">Conclusão</h2>
+
+<p>Neste post, vimos o passo-a-passo para se instalar e configurar rapidamente um site pessoal, graças à combinação das tecnologias Hugo e Docker, ambas com a capacidade de agilizar o processo de desenvolvimento e infraestrutura.</p>
+
+<p>Caso algo não tenha ficado claro ou haja alguma dúvida, fique à vontade para perguntar nos comentários abaixo. Se você ver algum erro no processo, fique à vontade também para informar, e irei editar o post.</p>
+
+<p>Compartilhe!</p>
 <div class="footnotes">
 
 <hr />
