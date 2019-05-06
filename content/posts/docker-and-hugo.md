@@ -2,7 +2,7 @@
 title       = "Criando rapidamente um site pessoal com Hugo e Docker"
 linktitle   = "Criando rapidamente um site pessoal com Hugo e Docker"
 description = "Como eu criei e deployei rapidamente este site com Hugo e Docker"
-date        = "2019-04-25"
+date        = "2019-05-06"
 comments    = true
 keywords    = ["hugo", "golang", "go", "docker", "deploy"]
 toc         = true
@@ -79,7 +79,7 @@ Após instalar o tema, podemos começar a configurar o site através do arquivo 
 * `author.name`: Autor do site (também usado nos metadados).
 * `keywords`: Palavras-chave relacionadas com o seu site (também usado nos metadados).
 
-Lógicamente, este é apenas um subconjunto comum de dezenas de possibilidades de configuração, e, normalmente, o suficiente para começar. Você pode consultar [a documentação do Hugo](https://gohugo.io/getting-started/configuration) ou do tema que você escolheu para mais possibilidades de configuração, como [menus](https://gohugo.io/content-management/menus/), [suporte a várias línguas](https://gohugo.io/content-management/multilingual/), [comentários](https://gohugo.io/content-management/comments/) etc.
+Logicamente, este é apenas um subconjunto comum de dezenas de possibilidades de configuração, e, normalmente, o suficiente para começar. Você pode consultar [a documentação do Hugo](https://gohugo.io/getting-started/configuration) ou do tema que você escolheu para mais possibilidades de configuração, como [menus](https://gohugo.io/content-management/menus/), [suporte a várias línguas](https://gohugo.io/content-management/multilingual/), [comentários](https://gohugo.io/content-management/comments/) etc.
 
 ## Produzindo Conteúdo
 
@@ -149,3 +149,58 @@ Como a única coisa que precisamos é servir arquivos estáticos, o *nginx* é u
 FROM nginx:alpine
 COPY public /usr/share/nginx/html
 ```
+
+Caso queira rodar o contâiner na sua máquina para testar, você pode fazê-lo facilmente com o comando
+
+```
+$ docker run --name mysite -d -p 80:80 mysite-instance
+```
+e acessá-lo através do navegador em http://localhost:80 (ou qual seja a porta que você configurou no argumento `-p`).
+
+## Subindo o Site no Amazon ECS
+
+Com o seu site e *Dockerfile* devidamente configurado, só resta subir ele para que todos possam acessar. O primeiro passo para isso é disponibilizar a sua imagem no [Docker Hub](https://docs.docker.com). Você pode criar quantos repositórios públicos quiser de graça, e o processo está descrito na [documentação](https://docs.docker.com/docker-hub/repos/). Se você preferir, pode também anexar o repositório do Docker Hub ao seu repositório Git. Desta forma, sempre que for feito um *commit* no Git, o Docker Hub irá puxar a versão mais atual e atualizar a imagem.
+
+{{< aside warning >}}Os serviços da *Amazon Web Services* não são gratuitos em sua totalidade. Não me responsabilizo por quaisquer cobranças que você, eventualmente, venha a receber por ter seguido os passos a seguir.{{</aside>}}
+
+Feito isso, abra o seu *console* da Amazon Web Sevices e procure pelo seviço **ECS**. Na página do serviço, clique em **Task Definitions**. Uma lista de *tasks* aparecerá (o que deverá estar vazia no momento). Clique no botão azul em cima da lista, escrito *Create new Task Definition*.
+
+{{< post_image src="01.png" position="center"  >}}
+
+Nesta página, quase todos os campos podem ficar como estão. Vamos fazer apenas duas mudanças. Primeiramente, dê um nome ao seu *task* através do campo *Task Definition Name*. Em seguida, desça até a seção chamada **Container Definitions** e clique no botão azul **Add container**. Uma tela se abrirá para você preencher outros dados.
+
+{{< post_image src="02.png" position="center" >}}
+
+Nesta tela, preencha o **Container name** com um nome arbitrário para o seu contâiner. O próximo campo, **Image**, deverá ter o nome da imagem conforme você especificou ao subir para o Docker Hub. Lembre-se de incluir o *namespace* da imagem, isto é, o nome da sua conta. No meu caso, ficou `mateusfccp/mateusfccp.me`.
+
+Em *Memory Limits*, você define como será a alocação de memória para seu contâiner. Não vou entrar em detalhes aqui, recomendo que deixe um **Hard Limit** de **300MiB**, a não ser que veja necessidade de mais. No meu caso, por ser um site simples, foi o suficiente.
+
+Role a página até onde está escrito **Port mappings**. Para que seu contâiner fique visível, é necessário mapear a porta 80 do contâiner para a porta 80 do *host*. Em **protocol**, deixe como está (tcp). Clique no botão **Add** para finalizar a configuração do contâiner, e em **Create** para finalizar a criação da *Task Definition*.
+
+O próximo passo é criar um **Cluster**, isso é, uma máquina onde o seu contâiner vai rodar. Retorne à página principal do **Amazon ECS** e, no menu lateral, clique em **Clusters**. A página deverá mostrar todos os *clusters* configurados, se houver algum. Clique no botão azul **Create Cluster** e escolha entre o template de Linux ou Windows (💩).
+
+Na página seguinte, configure o *cluster* conforme a sua necessidade. Eu, particularmente, após inserir o nome, optei por uma instância (**EC2 instance type**) *t2.micro*, já que ela possui um período de gratuidade, e deixei o restante dos campos com seus valores padrão. Clique em **Create**. Você verá uma página detalhando a criação do seu *cluster*.
+
+Por fim, iremos anexar o *Task Definition* que criamos anteriormente ao *cluster* que acabamos de criar. Isso é feito atraveś de *services*. Volte novamente à página de *clusters*, onde agora você deverá ver o seu cluster recém criado, e clique nele.
+
+Uma página com alguns dados do *cluster* irá aparecer, e várias abas, onde a primeira é *services*. Clique no botão azul abaixo da aba, **Create**.
+
+{{< post_image src="03.png" position="center" >}}
+
+Selecione a *Task Definition* e o *cluster* criados nos *dropdowns* respectivos. Nomeie o seu serviço e defina um número de *tasks* do seu serviço como 1. Todos os outros campos podem ser deixados como estão. Clique em **Next**.
+
+As duas páginas seguintes podem ser ignoradas. Avance-as deixando-as como estão. A última página mostrará um resumo das configurações escolhidas. Confira esses dados, e se estiverem de acordo com suas necessidades, clique em **Create Service**. Seu site já está disponível para a web!
+
+## Verificando os dados o seu contâiner
+
+Após sua aplicação ter sido configurada com sucesso, provavelmente você vai querer ver informações acerca dela, principalmente o IP público, para que você possa configurar um domínio. Para fazer isso, acesse novamente o seu *cluster, e clique na aba **ECS Instances**. Clique na única instância que estará na lista, no primeiro campo (**Container Instance**), e você será direcionado a uma página como esta:
+
+{{< post_image src="04.png" position="center" >}}
+
+## Conclusão
+
+Neste post, vimos o passo-a-passo para se instalar e configurar rapidamente um site pessoal, graças à combinação das tecnologias Hugo e Docker, ambas com a capacidade de agilizar o processo de desenvolvimento e infraestrutura.
+
+Caso algo não tenha ficado claro ou haja alguma dúvida, fique à vontade para perguntar nos comentários abaixo. Se você ver algum erro no processo, fique à vontade também para informar, e irei editar o post.
+
+Compartilhe!
