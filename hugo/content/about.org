@@ -1,0 +1,11 @@
++++
+title = "Sobre"
+date = "2019-04-24"
+
+[author]
+name = "Mateus Felipe Cordeiro Caetano Pinto"
++++
+
+{{< image src="/images/profile.jpg" alt="Mateus Felipe" position="center" style="border-radius: 50%; border: 2px solid darkgray;" >}}
+
+22 anos, formado em Teologia. Programa há 13 anos, tendo se especializado, principalmente, em PHP e tecnologias correlatas (Wordpress, Laravel). No entanto, lida constantemente também com outras tecnologias, como Python, Rust, go, Reason, Ecmascript, e de vez em quando brinca com Elm, Elixir, Ruby, Hack, C, C++, C#, Dart, entre outras. Atualmente, trabalha de forma autônoma como desenvolvedor web e cursa pós-graduação (/lato sensu/) em Teologia Bíblica.
