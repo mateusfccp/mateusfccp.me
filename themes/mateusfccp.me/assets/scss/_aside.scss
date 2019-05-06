@@ -1,0 +1,37 @@
+.aside {
+    padding: 1rem 2rem;
+    background-color: rgba(256, 256, 256, 0.1);
+
+    .aside-header {
+	display: flex;
+	align-items: center;
+	margin-bottom: .1rem;
+
+	.title {
+	    font-weight: 700;
+	    font-size: 1.125rem;
+	}
+
+	.cursor {
+	    &.note {
+		background: #fe5186;
+	    }
+
+	    &.warning {
+		background: #eb6534;
+	    }
+
+	    &.danger {
+		background: #f71735;
+	    }
+	    
+	    display: inline-block;
+	    width: 10px;
+	    height: 1rem;
+	    margin-left: 5px;
+	    border-radius: 1px;
+	    animation: cursor 1s infinite;
+	}
+
+    }
+}

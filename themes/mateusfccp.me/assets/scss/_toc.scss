@@ -1,0 +1,42 @@
+aside.toc {
+    background-color: rgba(256, 256, 256, 0.1);
+    padding: 1rem 2rem;
+    
+    .toc-title {
+	font-size: 1.7rem;
+	line-height: 1;
+	padding-bottom: .5rem;
+
+	&:after {
+	    margin-top: .3rem;
+	    content: "";
+	    display: block;
+	    height: 2px;
+	    width: 100%;
+	    background-color: $light-color-secondary;
+	}
+    }
+    
+    nav#TableOfContents > ul {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+
+	& > li > ul {
+	    padding: 0;
+	}
+
+	ul {
+	    margin-left: 2rem;
+	    list-style-type: disc;
+
+	    a {
+		text-decoration: none;
+
+		&:hover {
+		    color: white;
+		}
+	    }
+	}
+    }
+}

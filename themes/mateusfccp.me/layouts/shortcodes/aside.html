@@ -1,0 +1,6 @@
+{{ if .Get 0 }}
+<aside class="aside {{ .Get 0 }}">
+    <div class="aside-header"><span style="margin-right: .4rem">&gt;</span> <span class="title">{{ .Get 0 | i18n | title }}</span> <div class="cursor {{ .Get 0 }}"> </div></div>
+    {{ .Inner | markdownify }}
+</aside>
+{{ end }}
