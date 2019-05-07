@@ -1,8 +1,8 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Mateus Felipe</title><link>http://mateusfccp.me/posts/</link><description>Recent content in Posts on Mateus Felipe</description><generator>Hugo -- gohugo.io</generator><language>pt-br</language><copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><lastBuildDate>Mon, 06 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://mateusfccp.me/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Criando rapidamente um site pessoal com Hugo e Docker</title><link>http://mateusfccp.me/posts/docker-and-hugo/</link><pubDate>Mon, 06 May 2019 00:00:00 +0000</pubDate><guid>http://mateusfccp.me/posts/docker-and-hugo/</guid><description>Introdução Criar um site pessoal é uma tarefa trivial. Existem diversas opções no mercado, desde opções para leigos totais, como o Wix, ou plataformas mais robustas (e, neste caso, de qualidade questionável), como o Wordpress. No entanto, caso se queira maior flexibilidade e capacidade técnica, o mais comum é se recorrer a soluções mais técnicas. Ainda assim, parece ser um esforço demasiado e desnecessário gastar o seu tempo lidando com rotas, middlewares, requisições HTTP ou quaisquer outros aspectos técnicos que não se deseja ter que lidar apenas para um site pessoal, mesmo que você tenha o conhecimento necessário.</description><content type="html"><![CDATA[
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Mateus Felipe</title><link>http://mateusfccp.me/posts/</link><description>Recent content in Posts on Mateus Felipe</description><generator>Hugo -- gohugo.io</generator><language>pt-br</language><copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><lastBuildDate>Mon, 06 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://mateusfccp.me/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Criando rapidamente um site pessoal com Hugo e Docker</title><link>http://mateusfccp.me/posts/docker-and-hugo/</link><pubDate>Mon, 06 May 2019 00:00:00 +0000</pubDate><guid>http://mateusfccp.me/posts/docker-and-hugo/</guid><description>Introdução Criar um site pessoal é uma tarefa trivial. Existem diversas opções no mercado, desde opções para leigos totais, como o Wix, ou plataformas mais robustas (e, neste caso, de qualidade questionável), como o Wordpress. No entanto, caso se queira maior flexibilidade, o mais comum é se recorrer a soluções mais técnicas. Ainda assim, parece ser um esforço demasiado e desnecessário gastar o seu tempo lidando com rotas, middlewares, requisições HTTP ou quaisquer outros aspectos técnicos que não se deseja ter que lidar apenas para um site pessoal, mesmo que você tenha o conhecimento necessário.</description><content type="html"><![CDATA[
 
 <h2 id="introdução">Introdução</h2>
 
-<p>Criar um site pessoal é uma tarefa trivial. Existem diversas opções no mercado, desde opções para leigos totais, como o <a href="https://pt.wix.com/">Wix</a>, ou plataformas mais robustas (e, neste caso, de qualidade questionável), como o <a href="https://wordpress.com/">Wordpress</a>. No entanto, caso se queira maior flexibilidade e capacidade técnica, o mais comum é se recorrer a soluções mais técnicas. Ainda assim, parece ser um esforço demasiado e desnecessário gastar o seu tempo lidando com rotas, middlewares, requisições HTTP ou quaisquer outros aspectos técnicos que não se deseja ter que lidar apenas para um site pessoal, mesmo que você tenha o conhecimento necessário.</p>
+<p>Criar um site pessoal é uma tarefa trivial. Existem diversas opções no mercado, desde opções para leigos totais, como o <a href="https://pt.wix.com/">Wix</a>, ou plataformas mais robustas (e, neste caso, de qualidade questionável), como o <a href="https://wordpress.com/">Wordpress</a>. No entanto, caso se queira maior flexibilidade, o mais comum é se recorrer a soluções mais técnicas. Ainda assim, parece ser um esforço demasiado e desnecessário gastar o seu tempo lidando com rotas, middlewares, requisições HTTP ou quaisquer outros aspectos técnicos que não se deseja ter que lidar apenas para um site pessoal, mesmo que você tenha o conhecimento necessário.</p>
 
 <p>Diante disso, algumas alternativas se apresentam como tecnologias que tentam proporcionar o melhor de ambas as abordagens, isto é, garantir um <em>deploy</em> rápido e um <em>workflow</em> simples sem comprometer a flexbilidade técnica. A fim de implementar <a href="mateusfccp.me">meu site pessoal</a>, optei por uma dessas tecnologias, a saber, o <a href="https://gohugo.io/">Hugo</a>.</p>
 
@@ -76,16 +76,15 @@
 
 <p>O Hugo irá gerar um novo arquivo conforme o tipo de conteúdo especificado, que varia de tema para tema. No meu caso, o arquivo gerado tem o seguinte conteúdo:</p>
 
-<pre><code class="language-yaml">---
-title: &quot;Criando rapidamente um site pessoal com Hugo e Docker&quot;
-date: 2019-04-29T10:56:41-03:00
-draft: true
-toc: false
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+title: <span style="color:#e6db74">&#34;Criando rapidamente um site pessoal com Hugo e Docker&#34;</span>
+date: <span style="color:#e6db74">2019-04-29T10:56:41</span>-<span style="color:#ae81ff">03</span>:<span style="color:#ae81ff">00</span>
+draft: <span style="color:#66d9ef">true</span>
+toc: <span style="color:#66d9ef">false</span>
 images:
 tags:
   - untagged
----
-</code></pre>
+---</code></pre></div>
 
 <p>Este cabeçalho se chama <a href="https://gohugo.io/content-management/front-matter/"><em>front matter</em></a>, na terminologia do Hugo. O <em>front matter</em> é definido entre os delimitadores <code>---</code><sup class="footnote-ref" id="fnref:6"><a href="#fn:6">7</a></sup>, e vão prover para o Hugo os dados necessários para a compilação correta dos arquivos. Apesar da estrutura criada prover os principais dados, há muitos outros que podem ser insertos no cabeçalho. Uma lista complete pode ser encontrada na <a href="https://gohugo.io/content-management/front-matter/#front-matter-formats">documentação</a>.</p>
 
@@ -120,9 +119,16 @@ Total in 71 ms
 
 <p>Como a única coisa que precisamos é servir arquivos estáticos, o <em>nginx</em> é uma opção viável. A <a href="https://hub.docker.com/_/nginx">imagem oficial do nginx</a> é mais do que suficiente para servirmos o site, e não vamos alterar nem mesmo uma linha do arquivo de configuração do <em>nginx</em>. Nosso <em>Dockerfile</em> fica simples:</p>
 
-<pre><code class="language-Dockerfile">FROM nginx:alpine
-COPY public /usr/share/nginx/html
-</code></pre>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> nginx:alpine</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>COPY public /usr/share/nginx/html</code></pre></td></tr></table>
+</div>
+</div>
 
 <p>Caso queira rodar o contâiner na sua máquina para testar, você pode fazê-lo facilmente com o comando</p>
 

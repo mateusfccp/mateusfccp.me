@@ -93,7 +93,7 @@ O Hugo simplifica a criação de conteúdo através do comando [`hugo new`](http
 
 O Hugo irá gerar um novo arquivo conforme o tipo de conteúdo especificado, que varia de tema para tema. No meu caso, o arquivo gerado tem o seguinte conteúdo:
 
-```yaml
+{{< highlight yaml >}}
 ---
 title: "Criando rapidamente um site pessoal com Hugo e Docker"
 date: 2019-04-29T10:56:41-03:00
@@ -103,7 +103,7 @@ images:
 tags:
   - untagged
 ---
-```
+{{</highlight>}}
 
 Este cabeçalho se chama [*front matter*](https://gohugo.io/content-management/front-matter/), na terminologia do Hugo. O *front matter* é definido entre os delimitadores `---`[^6], e vão prover para o Hugo os dados necessários para a compilação correta dos arquivos. Apesar da estrutura criada prover os principais dados, há muitos outros que podem ser insertos no cabeçalho. Uma lista complete pode ser encontrada na [documentação](https://gohugo.io/content-management/front-matter/#front-matter-formats).
 
@@ -145,10 +145,10 @@ Desenvolver um site rapidamente não tem muito sentido se você perder um bom te
 
 Como a única coisa que precisamos é servir arquivos estáticos, o *nginx* é uma opção viável. A [imagem oficial do nginx](https://hub.docker.com/_/nginx) é mais do que suficiente para servirmos o site, e não vamos alterar nem mesmo uma linha do arquivo de configuração do *nginx*. Nosso *Dockerfile* fica simples:
 
-```Dockerfile
+{{< highlight docker "linenos=table" >}}
 FROM nginx:alpine
 COPY public /usr/share/nginx/html
-```
+{{</highlight>}}
 
 Caso queira rodar o contâiner na sua máquina para testar, você pode fazê-lo facilmente com o comando
 
