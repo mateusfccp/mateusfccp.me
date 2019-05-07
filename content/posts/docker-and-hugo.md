@@ -13,7 +13,7 @@ name = "Mateus Felipe Cordeiro Caetano Pinto"
 
 ## Introdução
 
-Criar um site pessoal é uma tarefa trivial. Existem diversas opções no mercado, desde opções para leigos totais, como o [Wix](https://pt.wix.com/), ou plataformas mais robustas (e, neste caso, de qualidade questionável), como o [Wordpress](https://wordpress.com/). No entanto, caso se queira maior flexibilidade e capacidade técnica, o mais comum é se recorrer a soluções mais técnicas. Ainda assim, parece ser um esforço demasiado e desnecessário gastar o seu tempo lidando com rotas, middlewares, requisições HTTP ou quaisquer outros aspectos técnicos que não se deseja ter que lidar apenas para um site pessoal, mesmo que você tenha o conhecimento necessário.
+Criar um site pessoal é uma tarefa trivial. Existem diversas opções no mercado, desde opções para leigos totais, como o [Wix](https://pt.wix.com/), ou plataformas mais robustas (e, neste caso, de qualidade questionável), como o [Wordpress](https://wordpress.com/). No entanto, caso se queira maior flexibilidade, o mais comum é se recorrer a soluções mais técnicas. Ainda assim, parece ser um esforço demasiado e desnecessário gastar o seu tempo lidando com rotas, middlewares, requisições HTTP ou quaisquer outros aspectos técnicos que não se deseja ter que lidar apenas para um site pessoal, mesmo que você tenha o conhecimento necessário.
 
 Diante disso, algumas alternativas se apresentam como tecnologias que tentam proporcionar o melhor de ambas as abordagens, isto é, garantir um *deploy* rápido e um *workflow* simples sem comprometer a flexbilidade técnica. A fim de implementar [meu site pessoal](mateusfccp.me), optei por uma dessas tecnologias, a saber, o [Hugo](https://gohugo.io/).
 
